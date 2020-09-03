@@ -25,7 +25,7 @@ class Promo extends React.Component {
   }
 
   componentDidMount() {
-    const url = "http://127.0.0.1:8000/articles/promo";
+    const url = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/promo";
  
     axios.get(url).then((data) => {
         console.log(data);

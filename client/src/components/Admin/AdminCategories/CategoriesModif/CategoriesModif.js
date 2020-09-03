@@ -19,7 +19,7 @@ class CategoriesModif extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:8000/categories/" + this.state.categorieID).then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories/" + this.state.categorieID).then((res) => {
       this.setState({ nameValue: res.data.categorie.nom })
     })
   }
@@ -38,7 +38,7 @@ class CategoriesModif extends React.Component {
     }
     console.log(data);
     
-    axios.post("http://127.0.0.1:8000/categories/update/" + this.state.categorieID).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories/update/" + this.state.categorieID).then((res) => {
       this.props.history.push('/admin/categories')
     })
   } 

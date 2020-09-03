@@ -15,7 +15,7 @@ function ProfileUser() {
     const [dateAbo, setDateAbo] = useState("");
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/users/getByToken/" + localStorage.token).then(res => {
+        axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/getByToken/" + localStorage.token).then(res => {
             console.log(res.data)
             setUserId(res.data.user.id);
             setUserEmail(res.data.user.email);
@@ -59,7 +59,7 @@ function ProfileUser() {
                         email: changeEmail
                     }
                 }
-                axios.post("http://127.0.0.1:8000/users/update/" + userId, data).then(res => {
+                axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/update/" + userId, data).then(res => {
                     console.log(res);
                     window.location.reload();
                 }).catch(error => {

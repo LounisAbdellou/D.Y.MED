@@ -28,7 +28,7 @@ class AdminTransporteurs extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:8000/transporteurs").then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/transporteurs").then((data) => {
       console.log(data);
       
       const copy = this.state.allTransporteurs.slice()
@@ -45,7 +45,7 @@ class AdminTransporteurs extends React.Component {
     const copy = this.state.allTransporteurs.slice();
 
     console.log(e.target.attributes.value.value);
-    axios.post("http://127.0.0.1:8000/transporteurs/delete/"+ e.target.attributes.value.value).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/transporteurs/delete/"+ e.target.attributes.value.value).then((res) => {
       
       copy.map((item, i) => {
         if(item.id.toString() === res.data.id) {
@@ -69,7 +69,7 @@ class AdminTransporteurs extends React.Component {
       taux_america: this.state.americaValue,
     }
 
-    axios.post("http://127.0.0.1:8000/transporteurs/store", data).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/transporteurs/store", data).then((res) => {
       if (res.data.result === "creation_ok") {
         data["id"] = res.data.id;
         copy.push(data);

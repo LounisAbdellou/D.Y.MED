@@ -12,7 +12,7 @@ function Cards() {
     const [year, setYear] = useState();
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/users/getByToken/" + localStorage.token).then(res => {
+        axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/getByToken/" + localStorage.token).then(res => {
             setAllCards(res.data.carte_bleues);
             setUserId(res.data.user.id);
         }).catch(error => {
@@ -21,9 +21,9 @@ function Cards() {
     }, []);
 
     function deleteCard(id) {
-        axios.post("http://127.0.0.1:8000/carte_bleues/delete/" + id).then(res => {
+        axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/carte_bleues/delete/" + id).then(res => {
             console.log(res);
-            axios.get("http://127.0.0.1:8000/users/getByToken/" + localStorage.token).then(res => {
+            axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/getByToken/" + localStorage.token).then(res => {
                 setAllCards(res.data.carte_bleues);
             }).catch(error => {
                 console.log(error);
@@ -90,10 +90,10 @@ function Cards() {
                 numero: numberCard,
                 titulaire: titulaire
             }
-            axios.post("http://127.0.0.1:8000/carte_bleues/store/", data).then(res => {
+            axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/carte_bleues/store/", data).then(res => {
                 console.log(res);
                 setIsTrue(false);
-                axios.get("http://127.0.0.1:8000/users/getByToken/" + localStorage.token).then(res => {
+                axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/getByToken/" + localStorage.token).then(res => {
                     setAllCards(res.data.carte_bleues);
                 }).catch(error => {
                     console.log(error);

@@ -20,17 +20,17 @@ class ArticlesDetails extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:8000/articles/" + window.location.href.split("/")[4]).then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/" + window.location.href.split("/")[4]).then((data) => {
       console.log(data.data.article);
       
       this.setState({ articlesDetails: data.data.article })
 
-      axios.get("http://127.0.0.1:8000/categories/" + data.data.article.categories_id).then((data) => {
+      axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories/" + data.data.article.categories_id).then((data) => {
         this.setState({ articlesCate: data.data.categorie })
       })
     })
 
-    axios.get("http://127.0.0.1:8000/detail/articles/" + window.location.href.split("/")[4]).then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/detail/articles/" + window.location.href.split("/")[4]).then((data) => {
       this.setState({ allFormat: data.data.details })
     })
   }
@@ -42,7 +42,7 @@ class ArticlesDetails extends React.Component {
       quantity: 1
     }
 
-    axios.post("http://127.0.0.1:8000/cart/store", data).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/store", data).then((res) => {
       console.log(res);
       
     })

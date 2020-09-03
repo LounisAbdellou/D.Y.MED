@@ -39,7 +39,7 @@ class AdminArticles extends React.Component {
 
   componentDidMount() {
     this.props.checkReception()
-    axios.get("http://127.0.0.1:8000/articles").then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles").then((data) => {
       const copy = this.state.allArticles.slice()
 
       data.data.articles.map((item) => {
@@ -49,7 +49,7 @@ class AdminArticles extends React.Component {
       this.setState({ allArticles: copy })
     })
 
-    axios.get("http://127.0.0.1:8000/getRuptureArticle").then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/getRuptureArticle").then((data) => {
       const copy = this.state.RuptureArticle.slice()
 
       data.data.articles.map((item) => {
@@ -60,7 +60,7 @@ class AdminArticles extends React.Component {
       console.log(data);
     })
 
-    axios.get("http://127.0.0.1:8000/categories").then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories").then((data) => {
       const copy = this.state.allCategories.slice()
 
       data.data.categories.map((item) => {
@@ -69,7 +69,7 @@ class AdminArticles extends React.Component {
       this.setState({ allCategories: copy })
     })
 
-    axios.get("http://127.0.0.1:8000/producteurs").then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/producteurs").then((data) => {
       const copy = this.state.allProducteur.slice()
 
       data.data.producteurs.map((item) => {
@@ -83,7 +83,7 @@ class AdminArticles extends React.Component {
   onDelete(e) {
     const copy = this.state.allArticles.slice()
 
-    axios.post("http://127.0.0.1:8000/articles/delete/" + e.target.attributes.value.value).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/delete/" + e.target.attributes.value.value).then((res) => {
       copy.map((item, i) => {
         if (item.id.toString() === res.data.id) {
           copy.splice(i, 1)
@@ -103,7 +103,7 @@ class AdminArticles extends React.Component {
       }
     }
 
-    axios.post("http://127.0.0.1:8000/articles/onAvant/" + e.target.attributes.value.value, param).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/onAvant/" + e.target.attributes.value.value, param).then((res) => {
       copy.map((item, i) => {
         if (item.id.toString() === res.data.id) {
           item.devant = 1
@@ -127,7 +127,7 @@ class AdminArticles extends React.Component {
       photo: this.state.imgUpload,
     }
     
-    axios.post("http://127.0.0.1:8000/articles/store", sendArticles).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/store", sendArticles).then((res) => {
       if (res.data.result === "creation_ok") {
         sendArticles["id"] = res.data.id;
         sendArticles["vues"] = 0

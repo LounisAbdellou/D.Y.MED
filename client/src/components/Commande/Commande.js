@@ -45,15 +45,15 @@ class Commande extends React.Component {
       this.setState({ allWW: res.data })
     })
 
-    axios.get("http://127.0.0.1:8000/transporteurs").then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/transporteurs").then((res) => {
       this.setState({ allTransporteurs: res.data.transporteurs })
     })
 
-    axios.get("http://127.0.0.1:8000/expeditions").then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/expeditions").then((res) => {
       this.setState({ allModes: res.data.expeditions })
     })
 
-    axios.get("http://127.0.0.1:8000/adresses/user/" + localStorage.token).then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/adresses/user/" + localStorage.token).then((res) => {
       if (res.data.adresse) {
         this.setState({
           nomValue: res.data.adresse.nom,
@@ -119,7 +119,7 @@ class Commande extends React.Component {
       user: (this.props.isUser === true || this.props.isAdmin === true) ? true : false,
     }
 
-    axios.post("http://127.0.0.1:8000/cart/shipping/" + localStorage.token, data).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/shipping/" + localStorage.token, data).then((res) => {
       this.setState({ totalLivraison: res.data.price + " €" })
     })
   }
@@ -151,7 +151,7 @@ class Commande extends React.Component {
       alert("Vous devez choisir un mode de livraison.")
     } else {
       if (this.state.checked === true) {
-        axios.post("http://127.0.0.1:8000/adresses/store", data).then((res) => {
+        axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/adresses/store", data).then((res) => {
           this.setState({ 
             redirect: true ,
             data: data,

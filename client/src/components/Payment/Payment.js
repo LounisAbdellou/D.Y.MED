@@ -40,11 +40,11 @@ class Payment extends React.Component {
         user: (this.props.isUser === true || this.props.isAdmin === true) ? true : false,
       }
 
-      axios.post("http://127.0.0.1:8000/cart/shipping/" + localStorage.token, data).then((res) => {
+      axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/shipping/" + localStorage.token, data).then((res) => {
         this.setState({ totalLivraison: res.data.price })
       })
 
-      axios.get("http://127.0.0.1:8000/users/getByToken/" + localStorage.token, data).then((res) => {
+      axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/getByToken/" + localStorage.token, data).then((res) => {
         if (res.data.user !== undefined) {
           this.setState({ email: res.data.user.email })
         } else {
@@ -53,7 +53,7 @@ class Payment extends React.Component {
       })
     }
 
-    axios.get("http://127.0.0.1:8000/carte_bleues/user/" + localStorage.token).then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/carte_bleues/user/" + localStorage.token).then((res) => {
       if (res.data.carte) {
         this.setState({
           codeValue: res.data.carte.numero,
@@ -63,7 +63,7 @@ class Payment extends React.Component {
       }
     })
 
-    axios.get("http://127.0.0.1:8000/cart/" + localStorage.token).then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/" + localStorage.token).then((res) => {
       var total = 0;
 
       res.data.produits.map((item, i) => {
@@ -99,7 +99,7 @@ class Payment extends React.Component {
       }
 
       if (this.state.checked === true) {
-        axios.post("http://127.0.0.1:8000/carte_bleues/store", dataCarte).then((res) => {
+        axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/carte_bleues/store", dataCarte).then((res) => {
         })
       }
 
@@ -115,7 +115,7 @@ class Payment extends React.Component {
           quantity: item.quantity,
         }
 
-        axios.post("http://127.0.0.1:8000/commandes_clients/store", data).then((res) => {
+        axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/commandes_clients/store", data).then((res) => {
           copy.push(res.data.id)
         })
       })

@@ -25,7 +25,7 @@ class AdminExports extends React.Component {
 
     this.props.checkReception();
 
-    axios.get("http://127.0.0.1:8000/export").then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/export").then((data) => {
       const copy = this.state.response.slice();
       const nameCopy = this.state.name.slice();
       const SERVER = data.data.result[0];

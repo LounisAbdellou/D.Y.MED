@@ -24,7 +24,7 @@ export default class Searchbar extends React.Component {
 
         this.setState({ value: event.target.value.trim() });
         console.log(this.state.value)
-        axios.post('http://127.0.0.1:8000/searchbar', { value: this.state.value }, {})
+        axios.post('http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/searchbar', { value: this.state.value }, {})
             .then(res => {
                 const copy = this.state.Articles.slice()
 
@@ -74,7 +74,7 @@ export default class Searchbar extends React.Component {
                                                 <Card.Img variant="top" alt="produit" src={item.photo} />
                                                 <Card.Body>
                                                     <Card.Title className="articles-title">{item.titre}</Card.Title>
-                                                    <Link to={{ pathname: "/articles/" + item.id }} className="details">Details >></Link>
+                                                    <Link to={{ pathname: "/articles/" + item.id }} className="details">Details</Link>
                                                 </Card.Body>
                                             </div>
                                         </Card>

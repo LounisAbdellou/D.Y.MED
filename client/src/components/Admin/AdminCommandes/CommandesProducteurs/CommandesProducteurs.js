@@ -20,7 +20,7 @@ class CommandesProducteurs extends React.Component {
 
   componentDidMount() {
     this.props.checkReception()
-    axios.get("http://127.0.0.1:8000/commandeProd").then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/commandeProd").then((data) => {
       const copy = this.state.allCommandes.slice()
 
       data.data.commande.map((item) => {
@@ -34,7 +34,7 @@ class CommandesProducteurs extends React.Component {
   onDelete(e) {
     const copy = this.state.allCommandes.slice();
 
-    axios.post("http://127.0.0.1:8000/commandeProd/delete/" + e.target.attributes.value.value).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/commandeProd/delete/" + e.target.attributes.value.value).then((res) => {
 
       copy.map((item, i) => {
         if (item.id.toString() === res.data.id) {

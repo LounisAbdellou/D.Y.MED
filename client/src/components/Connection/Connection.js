@@ -24,7 +24,7 @@ export default class Connection extends React.Component {
 //     let id = cookies.get('User_id')
 //     let token = cookies.get('User_token')
 
-//     axios.post('http://127.0.0.1:8000/verifIsLogin', {id: id, token: token})
+//     axios.post('http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/verifIsLogin', {id: id, token: token})
 //         .then(res => {
 //             if(res.data.result === "no_login") {
 //                 this.setState({redirect: null});
@@ -36,7 +36,7 @@ export default class Connection extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    axios.post("http://127.0.0.1:8000/login", { email: this.state.email, password: this.state.password }).then(res => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/login", { email: this.state.email, password: this.state.password }).then(res => {
       if (res.data.result === "login_ok") {
         localStorage.setItem('token', res.data.token);
         window.location.href = "/";

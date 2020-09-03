@@ -19,7 +19,7 @@ class Catalogue extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:8000/categories").then((data) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories").then((data) => {
       const copy = this.state.allCate.slice()
 
       data.data.categories.map((item) => {

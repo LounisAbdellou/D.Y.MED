@@ -43,7 +43,7 @@ class Subscribe extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:8000/users/getByToken/" + localStorage.token).then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/getByToken/" + localStorage.token).then((res) => {
       if (res.data.user.annuel === 1 || res.data.user.mensuel === 1) {
         this.setState({
           subscribed: true,
@@ -51,7 +51,7 @@ class Subscribe extends React.Component {
       }
     })
 
-    axios.get("http://127.0.0.1:8000/carte_bleues/user/" + localStorage.token).then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/carte_bleues/user/" + localStorage.token).then((res) => {
       if (res.data.carte) {
         this.setState({
           codeValue: res.data.carte.numero,
@@ -90,11 +90,11 @@ class Subscribe extends React.Component {
     } else {
 
       if (event.target.className === "coord-bouton-banc addMonth") {
-        axios.post("http://127.0.0.1:8000/users/addMonth/" + this.props.token).then((res) => {
+        axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/addMonth/" + this.props.token).then((res) => {
           window.location.assign("/")
         })
       } else if (event.target.className === "coord-bouton-banc addYear") {
-        axios.post("http://127.0.0.1:8000/users/addYear/" + this.props.token).then((res) => {
+        axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/addYear/" + this.props.token).then((res) => {
           window.location.assign("/")
         })
       }

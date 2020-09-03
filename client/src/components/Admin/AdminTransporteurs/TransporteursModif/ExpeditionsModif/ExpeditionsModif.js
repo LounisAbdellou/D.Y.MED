@@ -24,7 +24,7 @@ class ExpeditionsModif extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:8000/expeditions/" + this.state.modeID).then((res) => {
+    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/expeditions/" + this.state.modeID).then((res) => {
       this.setState({
         nameValue: res.data.expeditions.nom,
         prixValue: res.data.expeditions.prix,
@@ -43,7 +43,7 @@ class ExpeditionsModif extends React.Component {
       }
     }
 
-    axios.post("http://127.0.0.1:8000/detail/update/" + this.state.detailsID, data).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/detail/update/" + this.state.detailsID, data).then((res) => {
       this.props.history.push('/admin/articles/modif/' + this.state.articleID)
     })
   }
@@ -56,7 +56,7 @@ class ExpeditionsModif extends React.Component {
         reception_date: this.state.receptionDate + " " + "00:00:00",
     }
 
-    axios.post("http://127.0.0.1:8000/commandeProd/store", data).then((res) => {
+    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/commandeProd/store", data).then((res) => {
       this.props.history.push('/admin/commandes/producteur')
     })   
   }
