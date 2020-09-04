@@ -19,7 +19,7 @@ function ProfilAdresse() {
     const [noAdresse, setNoAdresse] = useState(false);
 
     useEffect(() => {
-        axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/users/getByToken/" + localStorage.token).then(res => {
+        axios.get("https://aws.dymed-back-server.dev/users/getByToken/" + localStorage.token).then(res => {
             setUserId(res.data.user.id);
             if (res.data.adresses == null) {
                 setNoAdresse(true);
@@ -97,7 +97,7 @@ function ProfilAdresse() {
                     ville: changeVille,
                     postal: parseInt(changePostal)
                 }
-                axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/adresses/store", data).then(res => {
+                axios.post("https://aws.dymed-back-server.dev/adresses/store", data).then(res => {
                     console.log(res);
                     window.location.reload();
                 }).catch(error => {
@@ -114,7 +114,7 @@ function ProfilAdresse() {
                         postal: changePostal
                     }
                 }
-                axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/adresses/update/" + idAdresse, data).then(res => {
+                axios.post("https://aws.dymed-back-server.dev/adresses/update/" + idAdresse, data).then(res => {
                     console.log(res);
                     window.location.reload();
                 }).catch(error => {
@@ -127,7 +127,7 @@ function ProfilAdresse() {
     }
 
     function deleteAdresse() {
-        axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/adresses/delete/" + idAdresse).then(res => {
+        axios.post("https://aws.dymed-back-server.dev/adresses/delete/" + idAdresse).then(res => {
             console.log(res);
             window.location.reload();
         }).catch(error => {

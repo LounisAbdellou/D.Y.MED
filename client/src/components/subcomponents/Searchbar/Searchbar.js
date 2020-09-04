@@ -24,7 +24,7 @@ export default class Searchbar extends React.Component {
 
         this.setState({ value: event.target.value.trim() });
         console.log(this.state.value)
-        axios.post('http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/searchbar', { value: this.state.value }, {})
+        axios.post('https://aws.dymed-back-server.dev/searchbar', { value: this.state.value }, {})
             .then(res => {
                 const copy = this.state.Articles.slice()
 

@@ -16,7 +16,7 @@ class RecapCommande extends React.Component {
   }
 
   componentDidMount() {
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/deletePanier/" + localStorage.token).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/cart/deletePanier/" + localStorage.token).then((res) => {
       setInterval(() => { window.location.assign("/") }, 3000)
     })
   }

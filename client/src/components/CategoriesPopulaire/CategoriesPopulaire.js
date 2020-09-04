@@ -18,7 +18,7 @@ class CategoriesPopulaire extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories/search/popular").then(({data}) => {
+    axios.get("https://aws.dymed-back-server.dev/categories/search/popular").then(({data}) => {
         this.setState({
             CategoriesPopulaire: data,
         })

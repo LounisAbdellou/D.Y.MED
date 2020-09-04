@@ -56,7 +56,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/check/" + localStorage.token).then((res) => {
+    axios.get("https://aws.dymed-back-server.dev/check/" + localStorage.token).then((res) => {
       if (res.data.role === "admin") {
         this.setState({ 
           isAdmin: true,
@@ -83,7 +83,7 @@ class App extends React.Component {
   }
   
   checkReception() {
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/commandeProd/test").then((res) => {
+    axios.get("https://aws.dymed-back-server.dev/commandeProd/test").then((res) => {
     })
   }
 

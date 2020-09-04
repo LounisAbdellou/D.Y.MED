@@ -18,7 +18,7 @@ class ArticleEnAvant extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/devant").then((data) => {
+    axios.get("https://aws.dymed-back-server.dev/articles/devant").then((data) => {
         console.log(data.data.article[0].photo);
         console.log(data.data.article[0].titre);
         

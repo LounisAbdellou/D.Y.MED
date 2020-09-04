@@ -51,7 +51,7 @@ class Header extends React.Component {
       this.setState({Articles: []})
     } else {
       if (this.state.searchBy === "prop") {
-        axios.post('http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/search/prop', { value: this.state.value }, {})
+        axios.post('https://aws.dymed-back-server.dev/search/prop', { value: this.state.value }, {})
             .then(res => {
               const copy = this.state.Articles.slice()
   
@@ -69,7 +69,7 @@ class Header extends React.Component {
           console.log(error)
         })
       } else if (this.state.searchBy === "nom") {
-        axios.post('http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/searchbar', { value: this.state.value }, {})
+        axios.post('https://aws.dymed-back-server.dev/searchbar', { value: this.state.value }, {})
             .then(res => {
               const copy = this.state.Articles.slice()
   

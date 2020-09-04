@@ -17,7 +17,7 @@ class Categories extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories/1").then((data) => {
+    axios.get("https://aws.dymed-back-server.dev/categories/1").then((data) => {
       console.log(data.data);
       
       // const copy = this.state.allCategories.slice()

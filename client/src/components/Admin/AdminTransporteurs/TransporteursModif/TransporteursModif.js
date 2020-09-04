@@ -33,11 +33,11 @@ class TransporteursModif extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/expeditions/transporteurs/" + this.state.TransportID).then((res) => {
+    axios.get("https://aws.dymed-back-server.dev/expeditions/transporteurs/" + this.state.TransportID).then((res) => {
       this.setState({ allExpeditions: res.data.expeditions })
     })
 
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/transporteurs/" + this.state.TransportID).then((res) => {
+    axios.get("https://aws.dymed-back-server.dev/transporteurs/" + this.state.TransportID).then((res) => {
       this.setState({ 
         nameValue: res.data.transporteurs.nom,
         grammeValue: res.data.transporteurs.taux_gramme,
@@ -89,7 +89,7 @@ class TransporteursModif extends React.Component {
       taux_america: this.state.americaValue,
     }
 
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/transporteurs/update/" + this.state.TransportID, data).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/transporteurs/update/" + this.state.TransportID, data).then((res) => {
       this.props.history.push('/admin/transporteurs')
     })
   }
@@ -104,7 +104,7 @@ class TransporteursModif extends React.Component {
       estimations: this.state.estimValue,
     }
 
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/expeditions/store", data).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/expeditions/store", data).then((res) => {
       if (res.data.result === "creation_ok") {
         data["id"] = res.data.id;
         copy.push(data);
@@ -117,7 +117,7 @@ class TransporteursModif extends React.Component {
   onDelete(e) {
     const copy = this.state.allExpeditions.slice();
 
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/expeditions/delete/" + e.target.attributes.value.value).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/expeditions/delete/" + e.target.attributes.value.value).then((res) => {
 
       copy.map((item, i) => {
         if (item.id.toString() === res.data.id) {

@@ -30,7 +30,7 @@ class DetailPanier extends React.Component {
 
     componentDidMount() {
         let total = 0;
-        const requete = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/" + localStorage.token;
+        const requete = "https://aws.dymed-back-server.dev/cart/" + localStorage.token;
         // console.log(requete);
 
         axios.get(requete).then((data) => {
@@ -52,7 +52,7 @@ class DetailPanier extends React.Component {
         let total = 0;
 
         if (prevState.count !== this.state.count) {
-            axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/" + localStorage.token).then((data) => {
+            axios.get("https://aws.dymed-back-server.dev/cart/" + localStorage.token).then((data) => {
                 if (data.data.result !== "aucun achat trouver") {
                     data.data.produits.map((item, i) => {
                         total += pourcentage(item.caracteristiques_produits.prix, item.caracteristiques_produits.promo) * item.quantity
@@ -73,7 +73,7 @@ class DetailPanier extends React.Component {
         const data = {
             quantity: parseInt(e.target.attributes.quantity.value) + 1
         }
-        const requete = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/update/" + e.target.attributes.value.value;
+        const requete = "https://aws.dymed-back-server.dev/cart/update/" + e.target.attributes.value.value;
         axios.post(requete, data).then((res) => {
             console.log(res);
             const copy = this.state.allArticles.slice();
@@ -91,7 +91,7 @@ class DetailPanier extends React.Component {
         let itemId = e.target.attributes.itemid.value;
 
 
-        const requete = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/delete/" + e.target.attributes.itemId.value;
+        const requete = "https://aws.dymed-back-server.dev/cart/delete/" + e.target.attributes.itemId.value;
         axios.post(requete).then((res) => {
             console.log(res);
             const copy = this.state.allArticles.slice();
@@ -121,9 +121,9 @@ class DetailPanier extends React.Component {
             quantity: parseInt(e.target.attributes.quantity.value) - 1
         }
         if (testQuantity > 1) {
-            requete = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/update/" + e.target.attributes.value.value;
+            requete = "https://aws.dymed-back-server.dev/cart/update/" + e.target.attributes.value.value;
         } else {
-            requete = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/cart/delete/" + e.target.attributes.itemId.value;
+            requete = "https://aws.dymed-back-server.dev/cart/delete/" + e.target.attributes.itemId.value;
         }
         axios.post(requete, data).then((res) => {
             // console.log(res);

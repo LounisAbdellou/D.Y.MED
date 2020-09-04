@@ -17,7 +17,7 @@ class CommandesClients extends React.Component {
     }
 
     componentDidMount(){
-        axios.get('http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/commandes_clients').then(response => {
+        axios.get('https://aws.dymed-back-server.dev/commandes_clients').then(response => {
             console.log(response.data);
 
             this.setState({ allCommandes: response.data.commandes})

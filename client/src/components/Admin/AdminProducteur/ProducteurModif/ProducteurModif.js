@@ -31,7 +31,7 @@ class ProducteurModif extends React.Component {
     }
     console.log(data);
     
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/producteurs/update/" + this.props.location.state.id,data).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/producteurs/update/" + this.props.location.state.id,data).then((res) => {
       this.props.history.push('/admin/producteur')
     })
   } 

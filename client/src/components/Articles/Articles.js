@@ -25,8 +25,8 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
-    const all = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles";
-    const byCate = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/categorie/" + window.location.href.split("/")[5];
+    const all = "https://aws.dymed-back-server.dev/articles";
+    const byCate = "https://aws.dymed-back-server.dev/articles/categorie/" + window.location.href.split("/")[5];
     const url = (window.location.href.split("/")[4] !== "categorie") ? all : byCate
 
     axios.get(url).then((data) => {
@@ -48,7 +48,7 @@ class Articles extends React.Component {
     })
 
     if (url === byCate) {
-      axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories/" + window.location.href.split("/")[5]).then((data) => {
+      axios.get("https://aws.dymed-back-server.dev/categories/" + window.location.href.split("/")[5]).then((data) => {
         this.setState({ categorie: data.data.categorie.nom })
 
       })

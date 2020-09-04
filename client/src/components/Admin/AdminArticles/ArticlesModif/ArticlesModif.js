@@ -35,7 +35,7 @@ class ArticlesModif extends React.Component {
 
   componentDidMount() {
     this.props.checkReception()
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/" + this.state.articleID).then((res) => {
+    axios.get("https://aws.dymed-back-server.dev/articles/" + this.state.articleID).then((res) => {
       const copy = this.state.allCaract.slice()
 
       res.data.details.map((item) => {
@@ -53,7 +53,7 @@ class ArticlesModif extends React.Component {
       })
     })
 
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/categories").then((data) => {
+    axios.get("https://aws.dymed-back-server.dev/categories").then((data) => {
       const copy = this.state.allCategories.slice()
 
       data.data.categories.map((item) => {
@@ -107,7 +107,7 @@ class ArticlesModif extends React.Component {
   onDelete(e) {
     const copy = this.state.allCaract.slice();
 
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/detail/delete/" + e.target.attributes.value.value).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/detail/delete/" + e.target.attributes.value.value).then((res) => {
       copy.map((item, i) => {
         if (item.id.toString() === res.data.id) {
           copy.splice(i, 1)
@@ -130,7 +130,7 @@ class ArticlesModif extends React.Component {
       }
     }
 
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/update/" + this.state.articleID, sendArticles).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/articles/update/" + this.state.articleID, sendArticles).then((res) => {
       this.props.history.push('/admin/articles')
     })
   }
@@ -144,7 +144,7 @@ class ArticlesModif extends React.Component {
       stocks: this.state.stocksValue
     }
 
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/detail/store", data).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/detail/store", data).then((res) => {
       if (res.data.result === "creation_ok") {
         data["id"] = res.data.id;
         copy.push(data);

@@ -18,7 +18,7 @@ class ArticlesPopulaire extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/articles/search/popular").then((data) => {
+    axios.get("https://aws.dymed-back-server.dev/articles/search/popular").then((data) => {
       this.setState({
         ArticlesPopulaire: data.data,
       })

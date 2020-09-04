@@ -31,7 +31,7 @@ export default class Inscription extends React.Component {
   //     let id = cookies.get('User_id')
   //     let token = cookies.get('User_token')
 
-  //     axios.post('http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/verifIsLogin', {id: id, token: token})
+  //     axios.post('https://aws.dymed-back-server.dev/verifIsLogin', {id: id, token: token})
   //         .then(res => {
   //             if(res.data.result === "no_login") {
   //                 this.setState({redirect: null});
@@ -43,7 +43,7 @@ export default class Inscription extends React.Component {
   // } 
 
   handleSubmit = event => {
-    const API = "http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/register"
+    const API = "https://aws.dymed-back-server.dev/register"
     event.preventDefault();
 
     if (this.state.password === this.state.confpass) {
@@ -52,7 +52,7 @@ export default class Inscription extends React.Component {
         email: this.state.email, 
         password: this.state.password,
       }
-      axios.post('http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/register', data).then(res => {
+      axios.post('https://aws.dymed-back-server.dev/register', data).then(res => {
           if (res.data.result === "exist") {
             alert("Cette adresse email est deja utilisee.")
           } else {

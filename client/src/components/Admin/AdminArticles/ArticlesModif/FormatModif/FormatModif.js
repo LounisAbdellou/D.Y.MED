@@ -29,7 +29,7 @@ class FormatModif extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/detail/" + this.state.detailsID).then((res) => {
+    axios.get("https://aws.dymed-back-server.dev/detail/" + this.state.detailsID).then((res) => {
       this.setState({
         articleID: res.data.details.articles_id,
         producteurID: res.data.articles.producteurs_id,
@@ -52,7 +52,7 @@ class FormatModif extends React.Component {
       }
     }
 
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/detail/update/" + this.state.detailsID, data).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/detail/update/" + this.state.detailsID, data).then((res) => {
       // console.log(res.data);
       this.props.history.push('/admin/articles/modif/' + this.state.articleID)
     })
@@ -66,7 +66,7 @@ class FormatModif extends React.Component {
       reception_date: this.state.receptionDate + " " + "00:00:00",
     }
 
-    axios.post("http://ec2-18-218-191-39.us-east-2.compute.amazonaws.com/commandeProd/store", data).then((res) => {
+    axios.post("https://aws.dymed-back-server.dev/commandeProd/store", data).then((res) => {
       this.props.history.push('/admin/commandes/producteur')
     })
   }
