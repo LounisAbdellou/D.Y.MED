@@ -10,7 +10,7 @@
     "bootstrap": "^4.5.0",
     "fetch": "^1.1.0",
     "jquery": "^3.5.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.5.6",
     "netlify-cli": "^2.61.0",
     "react": "^16.13.1",
